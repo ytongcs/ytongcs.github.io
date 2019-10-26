@@ -4,6 +4,6 @@ title: "About"
 
 ### About this site
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
+For this website, I got inspired from the offical guide book *R Markdown: The Definitive Guide - 10.5 rmarkdown’s site generator* [link](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html). It really helped me a lot.
 
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+Right now, this is only the 1.0 version of my website. More functions and contents will be comming soon.

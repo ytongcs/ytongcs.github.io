@@ -1,0 +1,23 @@
+---
+title: "Example"
+
+---
+
+
+```{r}
+library(tidyverse)
+```
+
+
+**mpg** contains observations collected by the US Environmental Protection Agency on 38 models of car.
+```{r}
+mpg
+```
+
+
+Map the colors of  *class* variable to reveal the class of each car.
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+

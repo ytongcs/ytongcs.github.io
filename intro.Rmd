@@ -1,0 +1,21 @@
+---
+title: "Introduction"
+---
+
+***
+### ggplot2
+ggplot2 is a data visualization package for the statistical programming language R. Created by Hadley Wickham in 2005, ggplot2 is an implementation of Leland Wilkinson's Grammar of Graphics—a general scheme for data visualization which breaks up graphs into semantic components such as scales and layers. ggplot2 can serve as a replacement for the base graphics in R and contains a number of defaults for web and print display of common scales. Since 2005, ggplot2 has grown in use to become one of the most popular R packages.
+
+
+***
+### Comparison with base graphics and other packages
+In contrast to base R graphics, ggplot2 allows the user to add, remove or alter components in a plot at a high level of abstraction. This abstraction comes at a cost, with ggplot2 being slower than lattice graphics.
+
+
+One potential limitation of base R graphics is the "pen-and-paper model" utilized to populate the plotting device.Graphical output from the interpreter is added directly to the plotting device or window rather than separately for each distinct element of a plot. In this respect it is similar to the lattice package, though Wickham argues ggplot2 inherits a more formal model of graphics from Wilkinson. As such, it allows for a high degree of modularity; the same underlying data can be transformed by many different scales or layers.
+
+
+Plots may be created via the convenience function qplot() where arguments and defaults are meant to be similar to base R's plot() function. More complex plotting capacity is available via ggplot() which exposes the user to more explicit elements of the grammar.
+
+
+Reference: [Wiki](https://en.wikipedia.org/wiki/Ggplot2)

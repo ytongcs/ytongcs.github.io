@@ -2,12 +2,28 @@ name: "Yay internet!"
 output_dir: "."
 navbar:
   title: "Home"
+  left:
+    - text: "Data Science Blog"
+      menu:
+        - text: "Data visualization with ggplot2"
+          menu:
+            - text: "Intro of ggplot2"
+              href: intro.html
+            - text: "Example"
+              href: example.html
+    - text: "My Resume"
+      href: https://drive.google.com/file/d/1l7U8FnnL8A_YTlLWkE8q9zY5BjAjvU_1/view?usp=sharing
   right:
     - text: "About"
       href: about.html
-    - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
     - icon: fa-github fa-lg
-      href: http://github.com/<YOUR_GH_NAME>/
+      href: https://github.com/ytongcs
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/Alicia_coldsun
+    - icon: fa-envelope fa-lg
+      href: mailto:<yil4004@med.cornell.edu>
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/dsgrad-yingtong/
+
 output:
   html_document

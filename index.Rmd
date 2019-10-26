@@ -1,7 +1,11 @@
 ---
-title: "Holy cow!"
+title: "Yingtong (Alicia) Lyu"
 ---
 
-### I have a webpage!
+### M.S. in Biostatistics and Data Science at Cornell University
 
-And I can put all kinds of stuff on it!
+I am a highly motivated and goal-oriented individual who is passionate about telling compelling stories, deriving actionable business insights and recommendations from data. Currently enrolling in Cornell University’s Biostatistics and Data Science program.
+
+Tool Sets : R . SAS . SQL . Python (Pandas, Numpy). Tableau (Data Visualization & Dashboarding)!
+
+![picture](https://media.licdn.com/dms/image/C4D03AQFVWcOX7EiWiA/profile-displayphoto-shrink_800_800/0?e=1577318400&v=beta&t=vZbnxtiBBcPqIX8c1mHOKJA_3A84u4sPW8Ou2fXL7Tc)

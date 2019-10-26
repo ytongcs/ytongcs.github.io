@@ -11,7 +11,7 @@
 
 
 
-<title>Yingtong (Alicia) Lyu</title>
+<title>Example</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -346,20 +346,40 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Yingtong (Alicia) Lyu</h1>
+<h1 class="title toc-ignore">Example</h1>
 
 </div>
 
 
-<div id="m.s.-in-biostatistics-and-data-science-at-cornell-university" class="section level3">
-<h3>M.S. in Biostatistics and Data Science at Cornell University</h3>
-<p>I am a highly motivated and goal-oriented individual who is passionate about telling compelling stories, deriving actionable business insights and recommendations from data. Currently enrolling in Cornell University’s Biostatistics and Data Science program.</p>
-<p>Tool Sets : R . SAS . SQL . Python (Pandas, Numpy). Tableau (Data Visualization &amp; Dashboarding)!</p>
-<div class="figure">
-<img src="https://media.licdn.com/dms/image/C4D03AQFVWcOX7EiWiA/profile-displayphoto-shrink_800_800/0?e=1577318400&amp;v=beta&amp;t=vZbnxtiBBcPqIX8c1mHOKJA_3A84u4sPW8Ou2fXL7Tc" alt="picture" />
-<p class="caption">picture</p>
-</div>
-</div>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ---------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## √ ggplot2 3.1.0       √ purrr   0.3.2  
+## √ tibble  2.1.1       √ dplyr   0.8.0.1
+## √ tidyr   0.8.3       √ stringr 1.4.0  
+## √ readr   1.3.1       √ forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<p><strong>mpg</strong> contains observations collected by the US Environmental Protection Agency on 38 models of car.</p>
+<pre class="r"><code>mpg</code></pre>
+<pre><code>## # A tibble: 234 x 11
+##    manufacturer model displ  year   cyl trans drv     cty   hwy fl    class
+##    &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 audi         a4      1.8  1999     4 auto~ f        18    29 p     comp~
+##  2 audi         a4      1.8  1999     4 manu~ f        21    29 p     comp~
+##  3 audi         a4      2    2008     4 manu~ f        20    31 p     comp~
+##  4 audi         a4      2    2008     4 auto~ f        21    30 p     comp~
+##  5 audi         a4      2.8  1999     6 auto~ f        16    26 p     comp~
+##  6 audi         a4      2.8  1999     6 manu~ f        18    26 p     comp~
+##  7 audi         a4      3.1  2008     6 auto~ f        18    27 p     comp~
+##  8 audi         a4 q~   1.8  1999     4 manu~ 4        18    26 p     comp~
+##  9 audi         a4 q~   1.8  1999     4 auto~ 4        16    25 p     comp~
+## 10 audi         a4 q~   2    2008     4 manu~ 4        20    28 p     comp~
+## # ... with 224 more rows</code></pre>
+<p>Map the colors of <em>class</em> variable to reveal the class of each car.</p>
+<pre class="r"><code>ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))</code></pre>
+<p><img src="example_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
 
 
