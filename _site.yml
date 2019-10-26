@@ -12,8 +12,7 @@ navbar:
             - text: "Example"
               href: example.html
     - text: "My Resume"
-      href: https://drive.google.com/file/d/1l7U8FnnL8A_YTlLWkE8q9zY5BjAjvU_1/view?usp=sharing
-  right:
+      href: https://drive.google.com/file/d/1SGJ5Gs-e77BtbDE9ZmH7dX1GckcMS9t-/view?usp=sharing
     - text: "About"
       href: about.html
     - icon: fa-github fa-lg
