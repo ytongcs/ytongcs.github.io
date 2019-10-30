@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -85,7 +86,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -246,18 +246,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -352,12 +340,12 @@ $(document).ready(function () {
 
 
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ---------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## √ ggplot2 3.1.0       √ purrr   0.3.2  
-## √ tibble  2.1.1       √ dplyr   0.8.0.1
-## √ tidyr   0.8.3       √ stringr 1.4.0  
-## √ readr   1.3.1       √ forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts ------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Attaching packages ------------ tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   1.0.0     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts --------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p><strong>mpg</strong> contains observations collected by the US Environmental Protection Agency on 38 models of car.</p>
@@ -376,10 +364,35 @@ $(document).ready(function () {
 ##  9 audi         a4 q~   1.8  1999     4 auto~ 4        16    25 p     comp~
 ## 10 audi         a4 q~   2    2008     4 manu~ 4        20    28 p     comp~
 ## # ... with 224 more rows</code></pre>
+<p>The variables are mostly self-explanatory:</p>
+<ul>
+<li><code>cty</code> and <code>hwy</code> record miles per gallon (mpg) for city and highway driving.</li>
+<li><code>displ</code> is the engine displacement in litres.</li>
+<li><code>drv</code> is the drivetrain: front wheel (f), rear wheel (r) or four wheel (4).</li>
+<li><code>model</code> is the model of car. There are 38 models, selected because they had a new edition every year between 1999 and 2008.</li>
+<li><code>class</code> (not shown), is a categorical variable describing the “type” of car: two seater, SUV, compact, etc.</li>
+</ul>
+<p>This dataset suggests many interesting questions. How are engine size and fuel economy related? Do certain manufacturers care more about fuel economy than others? Has fuel economy improved in the last ten years? We will try to answer some of these questions, and in the process learn how to create some basic plots with ggplot2.</p>
 <p>Map the colors of <em>class</em> variable to reveal the class of each car.</p>
 <pre class="r"><code>ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = class))</code></pre>
 <p><img src="example_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>ggplot2 takes care of the details of converting data (e.g., ‘f’, ‘r’, ‘4’) into aesthetics (e.g., ‘red’, ‘yellow’, ‘green’) with a scale. There is one scale for each aesthetic mapping in a plot. The scale is also responsible for creating a guide, an axis or legend, that allows you to read the plot, converting aesthetic values back into data values. For now, we’ll stick with the default scales provided by ggplot2. You’ll learn how to override them in Chapter 12.</p>
+<p>To learn more about those outlying variables in the previous scatterplot, we could map the class variable to colour:</p>
+<pre class="r"><code>ggplot(mpg, aes(displ, cty, colour = class)) + 
+  geom_point()</code></pre>
+<p><img src="example_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>This gives each point a unique colour corresponding to its class. The legend allows us to read data values from the colour, showing us that the group of cars with unusually high fuel economy for their engine size are two seaters: cars with big engines, but lightweight bodies.</p>
+<p>If you want to set an aesthetic to a fixed value, without scaling it, do so in the individual layer outside of aes(). Compare the following two plots:</p>
+<pre class="r"><code>ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = &quot;blue&quot;))</code></pre>
+<p><img src="example_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(mpg, aes(displ, hwy)) + geom_point(colour = &quot;blue&quot;)</code></pre>
+<p><img src="example_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p>There are two types of facetting: grid and wrapped. Wrapped is the most useful, so we’ll discuss it here, and you can learn about grid facetting later. To facet a plot you simply add a facetting specification with facet_wrap(), which takes the name of a variable preceded by ~.</p>
+<pre class="r"><code>ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  facet_wrap(~class)</code></pre>
+<p><img src="example_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
 
 
@@ -398,6 +411,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

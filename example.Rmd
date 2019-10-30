@@ -1,10 +1,9 @@
 ---
 title: "Example"
-
 ---
 
 
-```{r}
+```{r include=F}
 library(tidyverse)
 ```
 
@@ -14,10 +13,47 @@ library(tidyverse)
 mpg
 ```
 
+The variables are mostly self-explanatory:
+
+ + `cty` and `hwy` record miles per gallon (mpg) for city and highway driving.
+ + `displ` is the engine displacement in litres.
+ + `drv` is the drivetrain: front wheel (f), rear wheel (r) or four wheel (4).
+ + `model` is the model of car. There are 38 models, selected because they had a new edition every year between 1999 and 2008.
+ + `class` (not shown), is a categorical variable describing the “type” of car: two seater, SUV, compact, etc.
+ 
+This dataset suggests many interesting questions. How are engine size and fuel economy related? Do certain manufacturers care more about fuel economy than others? Has fuel economy improved in the last ten years? We will try to answer some of these questions, and in the process learn how to create some basic plots with ggplot2.
+
 
 Map the colors of  *class* variable to reveal the class of each car.
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+ggplot2 takes care of the details of converting data (e.g., ‘f’, ‘r’, ‘4’) into aesthetics (e.g., ‘red’, ‘yellow’, ‘green’) with a scale. There is one scale for each aesthetic mapping in a plot. The scale is also responsible for creating a guide, an axis or legend, that allows you to read the plot, converting aesthetic values back into data values. For now, we’ll stick with the default scales provided by ggplot2. You’ll learn how to override them in Chapter 12.
+
+To learn more about those outlying variables in the previous scatterplot, we could map the class variable to colour:
+
+
+```{r}
+ggplot(mpg, aes(displ, cty, colour = class)) + 
+  geom_point()
+```
+
+This gives each point a unique colour corresponding to its class. The legend allows us to read data values from the colour, showing us that the group of cars with unusually high fuel economy for their engine size are two seaters: cars with big engines, but lightweight bodies.
+
+If you want to set an aesthetic to a fixed value, without scaling it, do so in the individual layer outside of aes(). Compare the following two plots: 
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+```
+
+There are two types of facetting: grid and wrapped. Wrapped is the most useful, so we’ll discuss it here, and you can learn about grid facetting later. To facet a plot you simply add a facetting specification with facet_wrap(), which takes the name of a variable preceded by ~.
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  facet_wrap(~class)
 ```
 
